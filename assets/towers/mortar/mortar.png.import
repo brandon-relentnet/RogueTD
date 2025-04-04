@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1loes4c3w7ok"
-path="res://.godot/imported/mortar-explosion.png-e98b463eb9dc0982836fabdbe92c1334.ctex"
+uid="uid://c36g60pngdjp1"
+path="res://.godot/imported/mortar.png-4ae9a36f32509be28508d32284db189e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mortar-explosion.png"
-dest_files=["res://.godot/imported/mortar-explosion.png-e98b463eb9dc0982836fabdbe92c1334.ctex"]
+source_file="res://assets/towers/mortar/mortar.png"
+dest_files=["res://.godot/imported/mortar.png-4ae9a36f32509be28508d32284db189e.ctex"]
 
 [params]
 

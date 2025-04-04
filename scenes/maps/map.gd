@@ -1,13 +1,26 @@
 extends Node2D
-
 @export var tower_scene: PackedScene
 @export var tower_cost = 50
 var currency = 100
 var preview_tower = null
+@onready var shop = $TowerShop  # Reference to your TowerShop node
 
 func _ready():
+	print("Map _ready called")
+	print("Children of map node:", get_children())
+	
+	if has_node("TowerShop"):
+		print("TowerShop node found")
+	else:
+		print("TowerShop node NOT found")
 	if tower_scene == null:
 		tower_scene = load("res://scenes/towers/mortar/mortar.tscn")
+	
+	# Connect to shop signal
+	shop.tower_selected.connect(_on_tower_selected)
+	
+	# Update currency display
+	shop.set_currency(currency)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -23,6 +36,14 @@ func _unhandled_input(event):
 	# Update preview position when mouse moves while holding button
 	if event is InputEventMouseMotion and preview_tower != null:
 		preview_tower.global_position = get_global_mouse_position()
+
+func _on_tower_selected(tower_data):
+	# Called when a tower is selected from the shop
+	tower_scene = tower_data.scene
+	tower_cost = tower_data.cost
+	
+	# Optionally start tower placement right away
+	show_tower_preview(get_global_mouse_position())
 
 func show_tower_preview(position):
 	# Create preview tower if we can afford it
@@ -97,5 +118,6 @@ func place_tower(position):
 		add_child(tower)
 		currency -= tower_cost
 		
-		# Update UI (we'll add this later)
-		print("Currency: ", currency)  # For now just print
+		# Update shop currency
+		shop.set_currency(currency)
+		

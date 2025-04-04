@@ -335,5 +335,3 @@ curve = SubResource("Curve2D_05x41")
 [node name="EnemySpawner" type="Node2D" parent="."]
 scale = Vector2(2, 2)
 script = ExtResource("2_ce1uw")
-
-[node name="TowerShop" parent="." instance=ExtResource("2_1gdup")]

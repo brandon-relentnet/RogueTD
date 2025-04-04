@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fc5canjrrbs2"
-path="res://.godot/imported/mortar-projectile.png-4a723f08fe7d9241c06514cd9de8d995.ctex"
+uid="uid://67ac4dysral6"
+path="res://.godot/imported/EnemySprite.png-70260309ed9f29a4c6b27b0a6f37d80f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mortar-projectile.png"
-dest_files=["res://.godot/imported/mortar-projectile.png-4a723f08fe7d9241c06514cd9de8d995.ctex"]
+source_file="res://assets/EnemySprite.png"
+dest_files=["res://.godot/imported/EnemySprite.png-70260309ed9f29a4c6b27b0a6f37d80f.ctex"]
 
 [params]
 

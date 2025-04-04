@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cient7c7dffjd"]
+
+[ext_resource type="Script" uid="uid://bayrxgw72bbng" path="res://scenes/shop/towershop.gd" id="1_oxg1l"]
+
+[sub_resource type="Gradient" id="Gradient_oxg1l"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2oox0"]
+gradient = SubResource("Gradient_oxg1l")
+
+[node name="TowerShop" type="CanvasLayer"]
+script = ExtResource("1_oxg1l")
+
+[node name="ShopButton" type="TextureButton" parent="."]
+anchors_preset = -1
+offset_left = 232.0
+offset_right = 328.0
+offset_bottom = 40.0
+texture_normal = SubResource("GradientTexture2D_2oox0")
+
+[node name="CurrencyLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ShopContainer" type="Panel" parent="."]
+offset_right = 140.0
+offset_bottom = 480.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopContainer"]
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 480.0
+
+[node name="Label" type="Label" parent="ShopContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tower Shop"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TowerGrid" type="GridContainer" parent="ShopContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CloseButton" type="Button" parent="ShopContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16.895)
+layout_mode = 2

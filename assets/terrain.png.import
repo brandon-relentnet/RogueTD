@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://67ac4dysral6"
-path="res://.godot/imported/EnemySprite.png-7baef18dd9759782ff2ea0f2296d2d7d.ctex"
+uid="uid://bisdwpf3h3qeu"
+path="res://.godot/imported/terrain.png-02334d89f314a8996b3c48f78734ffd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EnemySprite.png"
-dest_files=["res://.godot/imported/EnemySprite.png-7baef18dd9759782ff2ea0f2296d2d7d.ctex"]
+source_file="res://assets/terrain.png"
+dest_files=["res://.godot/imported/terrain.png-02334d89f314a8996b3c48f78734ffd5.ctex"]
 
 [params]
 

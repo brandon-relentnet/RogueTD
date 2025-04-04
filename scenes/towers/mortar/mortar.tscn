@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://xglc8tmdblgs"]
 
 [ext_resource type="Script" uid="uid://c3mdgll74yxqq" path="res://scenes/towers/mortar/mortar.gd" id="1_0ljsp"]
-[ext_resource type="Texture2D" uid="uid://c36g60pngdjp1" path="res://mortar.png" id="2_8g6bx"]
+[ext_resource type="Texture2D" uid="uid://c36g60pngdjp1" path="res://assets/towers/mortar/mortar.png" id="2_8g6bx"]
 [ext_resource type="PackedScene" uid="uid://bqx7p8lnun2fc" path="res://scenes/towers/mortar/projectile.tscn" id="2_23jtl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uksqa"]
