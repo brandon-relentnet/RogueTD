@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://0y0ys004jtte"]
 
-[ext_resource type="Texture2D" uid="uid://bawjqnctkmss3" path="res://assets/images/map_autumn.png" id="1_38t8t"]
+[ext_resource type="Texture2D" uid="uid://bawjqnctkmss3" path="res://assets/images/map_autumn.png" id="1_vx0d6"]
 
 [sub_resource type="Curve2D" id="Curve2D_38t8t"]
 _data = {
@@ -12,7 +12,7 @@ point_count = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(320, 180)
-texture = ExtResource("1_38t8t")
+texture = ExtResource("1_vx0d6")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_38t8t")

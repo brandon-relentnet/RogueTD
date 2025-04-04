@@ -5,6 +5,8 @@ var current_character = null
 # Preload scenes
 var character_select_scene = preload("res://scenes/ui/character_select/CharacterSelect.tscn")
 var character_select_instance = null
+var run_manager_scene = preload("res://scripts/run_manager.gd")
+var run_manager = null
 
 func _ready():
 	# Show the main menu and hide other UI elements
@@ -16,6 +18,16 @@ func _ready():
 	$UI/MainMenu.connect("play_button_pressed", Callable(self, "_on_main_menu_play_pressed"))
 	$UI/MainMenu.connect("settings_button_pressed", Callable(self, "_on_settings_button_pressed"))
 	$UI/MainMenu.connect("quit_button_pressed", Callable(self, "_on_quit_button_pressed"))
+	
+	# Create run manager
+	run_manager = Node.new()
+	run_manager.set_script(run_manager_scene)
+	run_manager.name = "run_manager"  # Set a specific name so we can find it later
+	add_child(run_manager)
+	print("Run manager created with name: ", run_manager.name)
+	
+	# Connect run manager signals
+	run_manager.connect("run_completed", Callable(self, "_on_run_completed"))
 
 func _on_main_menu_play_pressed():
 	# Instead of loading map directly, show character selection
@@ -45,10 +57,23 @@ func _on_character_selected(character_id):
 	# Show HUD
 	$UI/HUD.show()
 
-	# In a more complex implementation, you'd set up the game state based on character selection:
-	# - Load character-specific towers
-	# - Initialize starting deck
-	print("Starting game with character: ", character_id)
+	# Start the run with the selected character
+	run_manager.start_run(character_id)
+	
+func _on_run_completed(successful):
+	# Clean up and return to the main menu
+	$UI/HUD.hide()
+	$UI/MainMenu.show()
+	
+	# Make sure any map instance is freed
+	if run_manager.current_map_instance:
+		run_manager.current_map_instance.queue_free()
+		run_manager.current_map_instance = null
+		
+	if successful:
+		print("Run completed successfully!")
+	else:
+		print("Run failed!")
 	
 func _on_settings_button_pressed():
 	# Implement settings menu
