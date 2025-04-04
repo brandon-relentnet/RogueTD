@@ -11,7 +11,6 @@ gradient = SubResource("Gradient_oxg1l")
 script = ExtResource("1_oxg1l")
 
 [node name="ShopButton" type="TextureButton" parent="."]
-anchors_preset = -1
 offset_left = 232.0
 offset_right = 328.0
 offset_bottom = 40.0

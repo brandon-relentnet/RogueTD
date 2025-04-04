@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyl8x7diqdvcl"]
+[gd_scene load_steps=5 format=3 uid="uid://dyl8x7diqdvcl"]
 
 [ext_resource type="Script" uid="uid://b6elg5s0801f5" path="res://scenes/enemies/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://67ac4dysral6" path="res://assets/EnemySprite.png" id="2_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://dr6xd3uplfj38" path="res://scenes/enemies/health_bar.tscn" id="3_j3y4l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8e3ao"]
 radius = 5.0
@@ -17,3 +18,5 @@ texture = ExtResource("2_4ra3w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_8e3ao")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_j3y4l")]

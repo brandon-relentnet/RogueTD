@@ -15,6 +15,10 @@ run/main_scene="res://scenes/maps/map.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+GameSpeedManager="res://scenes/maps/game_speed_manager.gd"
+
 [display]
 
 window/size/viewport_width=640
