@@ -115,6 +115,9 @@ func get_enemy_speed_multiplier():
 func is_current_boss_round():
 	return is_boss_round
 	
+func _on_level_completed():
+	get_node("DeckManager").start_level()
+	
 func debug_print(message):
 	if debug_mode:
 		print("[RoundManager] " + message)

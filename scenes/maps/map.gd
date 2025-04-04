@@ -69,6 +69,7 @@ func _ready():
 	round_manager.stage_completed.connect(_on_stage_completed)
 
 func _on_start_round_button_pressed():
+	get_node("DeckManager").start_level()
 	debug_print("Button pressed!")
 	if round_manager:
 		debug_print("Starting round via round manager")
