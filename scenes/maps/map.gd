@@ -6,13 +6,15 @@ var preview_tower = null
 @onready var shop = $TowerShop  # Reference to your TowerShop node
 @onready var round_manager = $RoundManager
 
+var debug_mode: bool = false
+
 func _ready():
-	print("Map _ready called")
+	debug_print("Map _ready called")
 	
 	if has_node("TowerShop"):
-		print("TowerShop node found")
+		debug_print("TowerShop node found")
 	else:
-		print("TowerShop node NOT found")
+		debug_print("TowerShop node NOT found")
 	if tower_scene == null:
 		tower_scene = load("res://scenes/towers/mortar/mortar.tscn")
 	
@@ -23,12 +25,12 @@ func _ready():
 	shop.set_currency(currency)
 
 func _on_start_round_button_pressed():
-	print("Button pressed!")
+	debug_print("Button pressed!")
 	if round_manager:
-		print("Starting round via round manager")
+		debug_print("Starting round via round manager")
 		round_manager.start_round()
 	else:
-		print("Round manager not found")
+		debug_print("Round manager not found")
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -128,3 +130,7 @@ func place_tower(position):
 		
 		# Update shop currency
 		shop.set_currency(currency)
+
+func debug_print(message):
+	if debug_mode:
+		print("[Map.gd] " + message)
