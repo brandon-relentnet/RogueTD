@@ -64,20 +64,3 @@ text = "Settings"
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MenuButtons"]
 layout_mode = 2
 text = "Quit"
-
-[node name="MapSelection" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 20
-
-[node name="Map1" type="Button" parent="MarginContainer/VBoxContainer/MapSelection"]
-layout_mode = 2
-text = "Map1"
-
-[node name="Map2" type="Button" parent="MarginContainer/VBoxContainer/MapSelection"]
-layout_mode = 2
-text = "Map2"
-
-[node name="Map3" type="Button" parent="MarginContainer/VBoxContainer/MapSelection"]
-layout_mode = 2
-text = "Map3"

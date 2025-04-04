@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp666jfr12ml8"]
+
+[ext_resource type="Script" uid="uid://dae7jobbv007k" path="res://scripts/ui/character_select/character_select.gd" id="1_cs001"]
+
+[sub_resource type="Gradient" id="Gradient_chr01"]
+colors = PackedColorArray(0.2, 0.4, 0.8, 1, 0.3, 0.6, 0.9, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_chr02"]
+gradient = SubResource("Gradient_chr01")
+fill_from = Vector2(0, 1)
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cs001")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_chr02")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Select Character"
+horizontal_alignment = 1
+
+[node name="CharacterContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Character1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CharacterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Portrait" type="Panel" parent="MarginContainer/VBoxContainer/CharacterContainer/Character1"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CharName" type="Label" parent="MarginContainer/VBoxContainer/CharacterContainer/Character1"]
+layout_mode = 2
+text = "Pyromancer"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/CharacterContainer/Character1"]
+layout_mode = 2
+text = "Fire-based towers with high damage"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectButton" type="Button" parent="MarginContainer/VBoxContainer/CharacterContainer/Character1"]
+layout_mode = 2
+text = "Select"
+
+[node name="Character2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CharacterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Portrait" type="Panel" parent="MarginContainer/VBoxContainer/CharacterContainer/Character2"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CharName" type="Label" parent="MarginContainer/VBoxContainer/CharacterContainer/Character2"]
+layout_mode = 2
+text = "Cryomancer"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/CharacterContainer/Character2"]
+layout_mode = 2
+text = "Ice-based towers with slowing effects"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectButton" type="Button" parent="MarginContainer/VBoxContainer/CharacterContainer/Character2"]
+layout_mode = 2
+text = "Select"
+
+[node name="Character3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CharacterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Portrait" type="Panel" parent="MarginContainer/VBoxContainer/CharacterContainer/Character3"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CharName" type="Label" parent="MarginContainer/VBoxContainer/CharacterContainer/Character3"]
+layout_mode = 2
+text = "Technomancer"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/CharacterContainer/Character3"]
+layout_mode = 2
+text = "Tech towers with area effects"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectButton" type="Button" parent="MarginContainer/VBoxContainer/CharacterContainer/Character3"]
+layout_mode = 2
+text = "Select"
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back to Main Menu"
