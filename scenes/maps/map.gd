@@ -4,10 +4,11 @@ extends Node2D
 var currency = 100
 var preview_tower = null
 @onready var shop = $TowerShop  # Reference to your TowerShop node
+@onready var start_button = $CanvasLayer/StartRoundButton  # Adjust path as needed
+@onready var round_manager = $RoundManager
 
 func _ready():
 	print("Map _ready called")
-	print("Children of map node:", get_children())
 	
 	if has_node("TowerShop"):
 		print("TowerShop node found")
@@ -21,6 +22,22 @@ func _ready():
 	
 	# Update currency display
 	shop.set_currency(currency)
+	
+	 # Connect button pressed signal to function
+	if start_button and round_manager:
+		start_button.pressed.connect(_on_start_round_button_pressed)
+		print("Button connected to round manager")
+	else:
+		print("Failed to connect button: ", start_button, " to round manager: ", round_manager)
+
+
+func _on_start_round_button_pressed():
+	print("Button pressed!")
+	if round_manager:
+		print("Starting round via round manager")
+		round_manager.start_round()
+	else:
+		print("Round manager not found")
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -120,4 +137,3 @@ func place_tower(position):
 		
 		# Update shop currency
 		shop.set_currency(currency)
-		

@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://4eavrnqvoesy"]
+[gd_scene load_steps=11 format=4 uid="uid://4eavrnqvoesy"]
 
 [ext_resource type="Script" uid="uid://hwgm8hdwoed7" path="res://scenes/maps/map.gd" id="1_ce1uw"]
 [ext_resource type="Texture2D" uid="uid://bisdwpf3h3qeu" path="res://assets/terrain.png" id="1_ry644"]
 [ext_resource type="PackedScene" uid="uid://cient7c7dffjd" path="res://scenes/shop/towershop.tscn" id="2_1gdup"]
 [ext_resource type="Script" uid="uid://cn5n8qlx5u58h" path="res://scenes/enemies/enemy_spawner.gd" id="2_ce1uw"]
+[ext_resource type="Script" uid="uid://4804cfwn444a" path="res://scenes/managers/round_manager.gd" id="5_idmyr"]
+[ext_resource type="PackedScene" uid="uid://bxmyt8rk4qhao" path="res://scenes/managers/round_manager.tscn" id="5_xltkm"]
+[ext_resource type="PackedScene" uid="uid://d3ftt1aq3lva7" path="res://scenes/ui/round_ui.tscn" id="7_elcdo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e0an3"]
 texture = ExtResource("1_ry644")
@@ -337,3 +340,8 @@ scale = Vector2(2, 2)
 script = ExtResource("2_ce1uw")
 
 [node name="TowerShop" parent="." instance=ExtResource("2_1gdup")]
+
+[node name="RoundManager" parent="." instance=ExtResource("5_xltkm")]
+script = ExtResource("5_idmyr")
+
+[node name="RoundUI" parent="." instance=ExtResource("7_elcdo")]

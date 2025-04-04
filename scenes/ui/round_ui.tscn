@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ftt1aq3lva7"]
+
+[ext_resource type="Script" uid="uid://bn2uvyx4lr2hu" path="res://scenes/ui/round_ui.gd" id="1_b03yw"]
+
+[node name="RoundUI" type="CanvasLayer"]
+script = ExtResource("1_b03yw")
+
+[node name="StartRoundButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -32.0
+offset_right = 53.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start Round"

@@ -18,7 +18,8 @@ offset_bottom = 40.0
 texture_normal = SubResource("GradientTexture2D_2oox0")
 
 [node name="CurrencyLabel" type="Label" parent="."]
-offset_right = 40.0
+offset_left = 96.0
+offset_right = 136.0
 offset_bottom = 23.0
 
 [node name="ShopContainer" type="Panel" parent="."]
@@ -27,8 +28,10 @@ offset_bottom = 480.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopContainer"]
 layout_mode = 0
-offset_right = 140.0
-offset_bottom = 480.0
+offset_left = 2.715
+offset_top = 4.16
+offset_right = 136.715
+offset_bottom = 478.16
 
 [node name="Label" type="Label" parent="ShopContainer/VBoxContainer"]
 layout_mode = 2
