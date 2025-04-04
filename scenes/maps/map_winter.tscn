@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfpf03wiwev1y"]
+
+[ext_resource type="Texture2D" uid="uid://bq85p55tfm21e" path="res://assets/images/map_winter.png" id="1_r1hv3"]
+
+[sub_resource type="Curve2D" id="Curve2D_38t8t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 80, 360, 0, 0, 0, 0, 80, 67, 0, 0, 0, 0, 560, 67, 0, 0, 0, 0, 560, 288, 0, 0, 0, 0, 175, 288, 0, 0, 0, 0, 175, 152, 0, 0, 0, 0, 640, 152)
+}
+point_count = 7
+
+[node name="Autumn" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("1_r1hv3")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_38t8t")
