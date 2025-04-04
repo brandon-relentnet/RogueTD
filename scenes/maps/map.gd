@@ -4,7 +4,6 @@ extends Node2D
 var currency = 100
 var preview_tower = null
 @onready var shop = $TowerShop  # Reference to your TowerShop node
-@onready var start_button = $CanvasLayer/StartRoundButton  # Adjust path as needed
 @onready var round_manager = $RoundManager
 
 func _ready():
@@ -22,14 +21,6 @@ func _ready():
 	
 	# Update currency display
 	shop.set_currency(currency)
-	
-	 # Connect button pressed signal to function
-	if start_button and round_manager:
-		start_button.pressed.connect(_on_start_round_button_pressed)
-		print("Button connected to round manager")
-	else:
-		print("Failed to connect button: ", start_button, " to round manager: ", round_manager)
-
 
 func _on_start_round_button_pressed():
 	print("Button pressed!")
