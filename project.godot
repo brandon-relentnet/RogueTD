@@ -10,21 +10,13 @@ config_version=5
 
 [application]
 
-config/name="RogueTD"
-run/main_scene="res://scenes/maps/map.tscn"
+config/name="DeckTD"
+run/main_scene="uid://dcgxhpyt2bb7a"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://assets/icon.svg"
-
-[autoload]
-
-GameSpeedManager="res://scenes/maps/game_speed_manager.gd"
+config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/viewport_height=360
 window/stretch/mode="viewport"
-
-[rendering]
-
-2d/snap/snap_2d_transforms_to_pixel=true

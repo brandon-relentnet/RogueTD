@@ -1,112 +1,127 @@
-# RogueTD - A Roguelite Deckbuilding Tower Defense
+## Overview
 
-## Game Concept
-RogueTD is a roguelite deckbuilding tower defense game where players choose a character archetype, build a deck of tower cards, and defend against waves of enemies across multiple encounters. Each successful encounter allows players to add new cards, upgrade existing ones, or heal their base, creating a strategic progression path through each run.
+Players choose a **Character** at the start of each run. Each character has:
 
-## Core Gameplay Loop
+- **5 Core Towers** (unique to each character)
+    
+- A **Starter Deck** with:
+    
+    - **10 Power Cards** (temporary effects like buffs, spikes, traps)
+        
+    - **2-3 Temporary Tower Cards** (strong, single-encounter towers)
+        
 
-### Characters/Archetypes
-- **Bombardier**: Specializes in explosive, area damage towers (mortars, missile launchers)
-- **Engineer**: Focuses on utility towers (slowing fields, buff towers that enhance nearby towers)
-- **Sniper**: Precision damage towers that hit hard but have slow attack speed
-- **Alchemist**: Poison/DoT effects, splash damage, and status effects
-- **Electromancer**: Chain lightning, stuns, and electric-themed towers
+Players progress through **Stages**, each composed of **Encounters**. After a few encounters, they face a challenging **Boss Battle**, earning powerful rewards upon victory.
 
-### Deck Structure
-- Start with 8-10 basic cards specific to your character's archetype
-- Maximum deck size of 20-25 cards
-- Hand of 4-5 cards per round, draw a new card each turn
+---
 
-### Resources
-- Energy system: Start with 3 energy per turn, upgrades can increase this
-- Some towers are cheap but basic, others cost more but have special abilities
-- Cards could have cooldowns to prevent spam of powerful towers
+## Gameplay Structure
 
-## Progression
+### Start of Stage
 
-### Run Structure
-1. Choose character
-2. Navigate a branching path map (like Slay the Spire)
-3. Three stages with 3-4 encounters each, culminating in a boss
-4. Different paths offer different rewards (card rewards, upgrades, healing)
+- Select a Character (each with unique towers and a starting deck)
+    
+- Place **5 Core Towers** anywhere on the available map space (permanent for the entire stage)
+    
+- Towers initially have **no upgrades**
+    
 
-### Rewards
-- **New Cards**: Add a new tower to your deck
-- **Upgrades**: Enhance existing towers (reduced cost, increased damage, special effects)
-- **Relics/Artifacts**: Permanent run modifiers (all explosive towers deal +20% damage)
-- **Health/Recovery**: Repair your base if it took damage
+### Encounter Flow
 
-### Tower Upgrades
-- Each tower could have 2-3 potential upgrade paths
-- Example: Mortar Tower → Heavy Mortar (more damage) OR Rapid Mortar (faster firing) OR Cluster Mortar (splits into smaller bombs)
+Each Stage consists of:
 
-## Encounter Design
+- **3-5 Regular Encounters** (each encounter ~5-10 enemy waves)
+    
+- **1 Boss Encounter** (longer, ~20 waves + Boss)
+    
 
-### Regular Encounters
-- Short 3-5 round battles with specific enemy compositions
-- Some encounters could have special rules (limited energy, pre-placed obstacles)
-- Map tiles that modify the encounter (forest: enemies move slower, desert: towers cost more)
+### Pre-Encounter Setup
 
-### Elite Encounters
-- Tougher mid-stage challenges with better rewards
-- Special enemy types with unique abilities
-- Environmental challenges (shifting terrain, weather effects)
+Before each encounter begins:
 
-### Boss Encounters
-- Large, multi-phase bosses with special abilities
-- 8-10 rounds with increasing difficulty
-- Require strategic tower placement and timing
+- Players draw a full hand from their Deck.
+    
+- Enemy "intent" for the encounter is clearly indicated (e.g., enemy types, wave count, special abilities).
+    
+- Players **strategically play their cards**:
+    
+    - **Temporary Tower Cards**: Towers that last only for this encounter.
+        
+    - **Power Cards**: Special effects (e.g., traps on paths, tower buffs, slowing enemies).
+        
+- Players **cannot play cards during the encounter itself**, reinforcing thoughtful setup and strategic depth.
+    
 
-## Meta-progression
+### During Encounter
 
-### Unlockables
-- New characters with different starting decks
-- Additional cards for each archetype
-- Alternate starting decks for existing characters
+- Towers automatically defend against enemy waves.
+    
+- Players watch the results of their strategic placements.
+    
 
-### Challenge Modes
-- Daily challenges with set conditions
-- Endless mode for high score chasing
-- Scenario challenges with predetermined cards and encounters
+### Post-Encounter Rewards
 
-## Implementation Plan
+After successfully completing an encounter:
 
-### Card System
-- Create a Card base class that other tower cards inherit from
-- Implement draw and discard piles
-- Add hand UI that shows available tower cards
+- **Tower Upgrade**: Choose one of the Core Towers to permanently upgrade (e.g., increased range, fire rate, splash damage, slowing effect).
+    
+- **Card Rewards**: Choose 1 new Power or Temporary Tower card from 3 randomly presented options, refining and strengthening the deck.
+    
 
-### Tower Placement
-- When a player selects a card, show valid placement areas
-- Implement energy cost system
-- Add visual feedback for tower range and targeting
+### Boss Encounter
 
-### Encounter Management
-- Design wave-based encounter system
-- Create encounter scriptable objects defining enemy types and spawn patterns
-- Add special condition modifiers
+After 3-5 regular encounters, players face a Boss Encounter:
 
-### Run Progression
-- Implement a map screen with node-based path system
-- Add reward selection screens
-- Create persistent run state that tracks deck, health, relics, etc.
+- ~20 challenging waves plus a powerful boss unit.
+    
+- Boss clearly telegraphs abilities and intent, allowing strategic preparation.
+    
 
-## Development Roadmap
+**Boss Rewards**:
 
-### Phase 1: Core Mechanics
-- Basic card system implementation
-- Simple tower placement
-- Enemy pathing and basic encounters
-- One character archetype with starter deck
+- **Relic**: Powerful, permanent passive effect (e.g., all towers deal bonus damage to slowed enemies, or towers regenerate health after waves).
+    
+- **Special Card**: Unique, potent card (e.g., powerful global effects, legendary temporary towers).
+    
 
-### Phase 2: Progression & Content
-- Add reward system
-- Implement tower upgrades
-- Create additional character archetypes
-- Expand tower and enemy variety
+---
 
-### Phase 3: Run Structure & Polish
-- Implement map navigation
-- Add boss encounters
-- Create meta-progression system
-- Balance and polish gameplay
+## Example Rewards & Cards
+
+### Example Power Cards
+
+- **Spiked Road**: Damages enemies who walk over it during the encounter.
+    
+- **Frenzy**: One tower has doubled attack speed for this encounter.
+    
+- **Ice Patch**: Slows enemies significantly for this encounter.
+    
+
+### Example Temporary Tower Cards
+
+- **Sniper Nest**: Extremely high damage, very slow rate of fire, lasts one encounter.
+    
+- **Tesla Coil**: Chains lightning between enemies, moderate damage, lasts one encounter.
+    
+
+### Example Relics
+
+- **Frozen Core**: All slowing effects from towers are 50% stronger.
+    
+- **Sharpened Blades**: Towers gain bonus damage each time they defeat an enemy wave.
+    
+
+---
+
+## Progression & Replayability
+
+- Each character provides a distinctly different playstyle.
+    
+- Deckbuilding and tower upgrades create unique strategic depth.
+    
+- Enemy intents encourage thoughtful tactical decision-making.
+    
+- Boss fights and relic rewards enhance replayability and satisfaction.
+    
+
+This structure maintains the satisfaction and progressive depth of tower defense while integrating the strategic nuance of deckbuilding roguelites.
