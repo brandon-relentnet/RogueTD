@@ -11,8 +11,11 @@ point_count = 7
 [node name="Autumn" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(320, 180)
+texture_filter = 1
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
 texture = ExtResource("1_3kka5")
 
 [node name="Path2D" type="Path2D" parent="."]
+scale = Vector2(2, 2)
 curve = SubResource("Curve2D_38t8t")

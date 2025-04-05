@@ -9,8 +9,10 @@ _data = {
 point_count = 7
 
 [node name="Autumn" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(320, 180)
 texture = ExtResource("1_g1v0x")
 

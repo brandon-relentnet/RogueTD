@@ -6,9 +6,28 @@ var map_sequence = []
 var current_map_index = 0
 var current_map_instance = null
 
+# Card database and deck manager
+var card_database
+var deck_manager
+
 signal run_started(character_id)
 signal map_completed(map_id)
 signal run_completed(successful)
+
+func _ready():
+	# Create card database
+	card_database = Node.new()
+	card_database.set_script(load("res://scripts/cards/card_database.gd"))
+	card_database.name = "CardDatabase"
+	add_child(card_database)
+	
+	# Create deck manager
+	deck_manager = Node.new()
+	deck_manager.set_script(load("res://scripts/cards/deck_manager.gd"))
+	deck_manager.name = "DeckManager"
+	add_child(deck_manager)
+	
+	print("Run manager initialized with card database and deck manager")
 
 # Start a new run with the given character
 func start_run(character_id):
@@ -27,11 +46,14 @@ func start_run(character_id):
 	print("Starting run with character: ", character_id)
 	print("Map sequence: ", map_sequence)
 	
+	# Initialize deck with character's starter cards
+	deck_manager.initialize_deck(character_id)
+	
 	# Load the first map
 	load_current_map()
 	
 	emit_signal("run_started", character_id)
-
+	
 # Load the current map based on the current_map_index
 func load_current_map():
 	# Clear any existing map

@@ -7,6 +7,8 @@ var character_select_scene = preload("res://scenes/ui/character_select/Character
 var character_select_instance = null
 var run_manager_scene = preload("res://scripts/run_manager.gd")
 var run_manager = null
+var game_ui_scene = preload("res://scenes/ui/GameUI.tscn")
+var game_ui_instance = null
 
 func _ready():
 	# Show the main menu and hide other UI elements
@@ -54,15 +56,23 @@ func _on_character_selected(character_id):
 	# Hide character select
 	character_select_instance.hide()
 	
-	# Show HUD
-	$UI/HUD.show()
-
+	# Hide existing UI elements
+	$UI/HUD.hide()
+	
+	# Instantiate game UI if not already created
+	if game_ui_instance == null:
+		game_ui_instance = game_ui_scene.instantiate()
+		$UI.add_child(game_ui_instance)
+	else:
+		game_ui_instance.show()
+		
 	# Start the run with the selected character
 	run_manager.start_run(character_id)
 	
 func _on_run_completed(successful):
 	# Clean up and return to the main menu
-	$UI/HUD.hide()
+	if game_ui_instance:
+		game_ui_instance.hide()
 	$UI/MainMenu.show()
 	
 	# Make sure any map instance is freed
