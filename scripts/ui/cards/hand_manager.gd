@@ -79,7 +79,7 @@ func _on_hand_updated(hand):
 	update_card_playability()
 	
 	# Update card positions in an arc formation
-	position_cards_in_arc()
+	position_cards_in_line()
 
 # Add a single card to the UI
 func add_card_to_ui(card):
@@ -100,8 +100,8 @@ func clear_hand_ui():
 	
 	card_ui_nodes.clear()
 
-# Position cards in a nice arc formation
-func position_cards_in_arc():
+# Replace the position_cards_in_arc function with this simplified version
+func position_cards_in_line():
 	var card_count = card_ui_nodes.size()
 	if card_count == 0:
 		return
@@ -110,72 +110,52 @@ func position_cards_in_arc():
 	var container_width = hand_container.size.x
 	var container_height = hand_container.size.y
 	
-	# Get the first card's size to use for calculations
-	# If there are no cards, we can't position anything
-	if card_count == 0 or card_ui_nodes[0] == null:
+	# Get card size (assuming all cards have the same size)
+	if card_ui_nodes[0] == null:
 		return
 	var card_width = card_ui_nodes[0].size.x
 	var card_height = card_ui_nodes[0].size.y
-
-	# Adaptive arc parameters based on hand size
-	var max_cards_without_overlap = 7
-	var scale_factor = min(1.0, max_cards_without_overlap / float(max(1, card_count)))
 	
-	# Make arc radius proportional to the width and hand size
-	var arc_radius = min(container_width * 0.7, card_count * card_width * 0.7)
+	# Calculate spacing between cards
+	var total_cards_width = card_width * card_count
+	var available_width = container_width
 	
-	# Position the arc center - keep it lower for more visible cards
-	# The 0.7 factor keeps the arc center below the bottom of the container
-	var arc_center = Vector2(container_width / 2, container_height + (container_height * 0.2))
-
-	# Adjust the arc angle based on card count
-	# More cards need a wider arc
-	var min_arc_angle = deg_to_rad(60)  # Minimum arc angle for 1-2 cards
-	var max_arc_angle = deg_to_rad(120) # Maximum arc angle for many cards
-	
-	var total_arc_angle = min_arc_angle + (max_arc_angle - min_arc_angle) * min(1.0, (card_count - 1) / 10.0)
-
-	# Position and rotate each card
-	if card_count == 1:
-		# Center a single card at the bottom
-		var card = card_ui_nodes[0]
-		card.position = Vector2(
-			container_width / 2 - card.size.x / 2,
-			container_height - card.size.y - 20
-		)
-		card.rotation = 0  # No rotation for a single card
+	# Determine if we need to overlap cards
+	var spacing = 0
+	if total_cards_width <= available_width:
+		# Enough space to show all cards without overlap
+		spacing = (available_width - total_cards_width) / (card_count + 1)
 	else:
-		# Calculate the starting angle so that the arc is centered
-		var angle_start = PI / 2 - total_arc_angle / 2
-		var angle_step = total_arc_angle / (card_count - 1)
+		# Not enough space, cards will need to overlap
+		spacing = (available_width - card_width) / (card_count - 1)
+	
+	# Position each card in a straight line
+	for i in range(card_count):
+		var card = card_ui_nodes[i]
 		
-		# Maximum card overlap - when there are too many cards
-		var max_overlap = 0.7  # 70% overlap at maximum density
-		var actual_overlap = max(0, 1.0 - scale_factor) * max_overlap
-		
-		# Card positioning loop
-		for i in range(card_count):
-			var angle = angle_start + angle_step * i
-			
-			# Calculate position on the arc
-			var pos = Vector2(
-				arc_center.x + arc_radius * cos(angle),
-				arc_center.y - arc_radius * sin(angle)
+		if card_count == 1:
+			# Center a single card
+			card.position = Vector2(
+				(container_width - card_width) / 2,
+				(container_height - card_height) / 2  # Center vertically
 			)
-			
-			var card = card_ui_nodes[i]
-			
-			# Calculate card offset to center it
-			var offset = card.size / 2
-			
-			# Position the card, centering it on the calculated point
-			card.position = pos - offset
-			
-			# Rotate the card to face upward with a slight tilt based on position
-			# Reduce rotation amount to make cards more readable
-			var rotation_factor = 0.3  # Reduce this for less rotation
-			card.rotation = (angle - PI/2) * rotation_factor
-			
+		else:
+			if total_cards_width <= available_width:
+				# Position with equal spacing between cards
+				card.position = Vector2(
+					spacing * (i + 1) + card_width * i,
+					(container_height - card_height) / 2  # Center vertically
+				)
+			else:
+				# Position with overlap
+				card.position = Vector2(
+					i * spacing,
+					(container_height - card_height) / 2  # Center vertically
+				)
+		
+		# No rotation needed for straight line
+		card.rotation = 0
+	
 	# Ensure all cards are updated visually
 	for card in card_ui_nodes:
 		card.update_visual_state()
@@ -251,7 +231,7 @@ func update_energy_display():
 # Handle window resize
 func _notification(what):
 	if what == NOTIFICATION_RESIZED:
-		position_cards_in_arc()
+		position_cards_in_line()
 
 func _on_end_turn_pressed():
 	print("End turn button pressed")
